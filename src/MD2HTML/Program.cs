@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Linq;
 using MarkdownSharp;
 
 namespace MD2HTML
@@ -8,7 +7,7 @@ namespace MD2HTML
     {
         static void Main(string[] args)
         {
-            if (args == null || args.Count() != 1)
+            if (args == null || args.Length != 1)
                 return;
 
             if (!File.Exists(args[0]))
@@ -19,7 +18,7 @@ namespace MD2HTML
             // Read in file contents
             string markdownData = File.ReadAllText(args[0]);
 
-            // load the markdown converter and tranform to html
+            // load the markdown converter and transform to html
             IMarkdownConverter markdownConverter = new MarkdownConverter(new Markdown());
             string htmlData = markdownConverter.Transform(markdownData);
 

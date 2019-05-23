@@ -9,20 +9,10 @@ namespace MD2HTML
 
         public MarkdownConverter(Markdown markdown)
         {
-            if(markdown == null)
-                throw new ArgumentNullException("markdown");
-            _markdown = markdown;
+            _markdown = markdown ?? throw new ArgumentNullException(nameof(markdown));
         }
 
-        public IMarkdownOptions Options
-        {
-            get { return _markdown.Options; }
-        }
-
-        public string Version
-        {
-            get { return _markdown.Version; }
-        }
+        public string Version => _markdown.Version;
 
         public string Transform(string text)
         {
